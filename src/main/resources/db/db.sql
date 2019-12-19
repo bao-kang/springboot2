@@ -1,0 +1,28 @@
+SET NAMES utf8;
+SET FOREIGN_KEY_CHECKS = 0;
+
+DROP TABLE  IF EXISTS `t_user`;
+CREATE TABLE `t_user` (
+  `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(50) NOT NULL COMMENT '用户名',
+  `phone` VARCHAR(30) NOT NULL COMMENT '手机号',
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB AUTO_INCREMENT = 2 DEFAULT CHARSET = utf8;
+
+
+DROP TABLE  IF EXISTS `t_car`;
+CREATE TABLE `t_car` (
+  `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(30) NOT NULL COMMENT '车名',
+  `color` VARCHAR(20) NOT NULL COMMENT '颜色',
+  `owner` BIGINT(20) NOT NULL COMMENT '主人',
+  PRIMARY KEY (`id`),
+  KEY `idx_owner` (`owner`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 DEFAULT CHARSET = utf8;
+
+BEGIN ;
+INSERT INTO `t_user` (`id`, `name`, `phone`) VALUES (1, '小娜', '1000000000');
+INSERT INTO `t_car` VALUES ('1','奥迪','red','1');
+COMMIT ;
+
+SET FOREIGN_KEY_CHECKS = 1;
