@@ -79,4 +79,11 @@
       owner = #{owner,jdbcType=BIGINT}
     where id = #{id,jdbcType=BIGINT}
   </update>
+
+  <select id="selectByOwner" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    SELECT
+    <include refid="Base_Column_List"/>
+    FROM t_car
+    WHERE owner = #{ownerId}
+  </select>
 </mapper>
